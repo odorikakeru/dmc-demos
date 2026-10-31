@@ -1,0 +1,39 @@
+[tool.ruff]
+line-length = 100
+exclude = [
+    ".git",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".venv",
+    "__pycache__",
+    "adams/legacy_simple",
+    "build",
+    "dist",
+    "experiments",
+    "tests",
+]
+
+[tool.ruff.lint]
+select = ["D", "E", "W", "F", "B", "I", "UP", "C90", "Q"]
+ignore = ["D203", "D213", "D400"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
+
+[tool.ruff.lint.mccabe]
+max-complexity = 12
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["D104"]
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "space"
+line-ending = "auto"
+docstring-code-format = true
+
+[tool.mypy]
+check_untyped_defs = true
