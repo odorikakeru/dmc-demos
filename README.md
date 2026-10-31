@@ -43,3 +43,20 @@ Run the test suite with:
 ```bash
 pytest
 ```
+
+## Run the TreeSelect documentation
+
+Install the requirements above, then start the local Dash server:
+
+```bash
+python app.py
+```
+
+Open [http://localhost:8050](http://localhost:8050) to view the TreeSelect guide. The
+component currently lives on the `feat/tree-select-v3` branch of the DMC fork, which is
+the branch installed by `requirements.txt`.
+
+The current feature branch has a packaging issue: importing
+`dash_mantine_components` fails because its generated `_imports_` module is missing.
+The page shows this limitation and omits the live component preview until the fork
+provides a working package.
