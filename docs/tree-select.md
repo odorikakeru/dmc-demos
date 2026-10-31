@@ -5,6 +5,11 @@ selection, multiple selection, and checkbox selection with parent-child cascadin
 See the [Mantine TreeSelect documentation](https://mantine.dev/core/tree-select/) for
 the underlying component.
 
+Run `python app.py` to explore the interactive documentation at
+[localhost:8050](http://localhost:8050). Each example has expandable source and the
+selection examples show their actual Dash callback values. Custom JavaScript
+functions are included in [`assets/tree-select.js`](../assets/tree-select.js).
+
 ## Usage
 
 Pass `data` as a list of nodes. Each node needs a unique string `value` and a `label`;
@@ -37,14 +42,17 @@ list of strings. The value can be controlled with a Dash callback:
 
 ```python
 import dash_mantine_components as dmc
-from dash import Dash, Input, Output, callback, html
+from dash import Dash, Input, Output, _dash_renderer, callback, html
 
+_dash_renderer._set_react_version('19.2.4')
 app = Dash()
-app.layout = html.Div(
-    [
-        dmc.TreeSelect(id='tree-select', data=data),
-        html.Div(id='selected-value'),
-    ]
+app.layout = dmc.MantineProvider(
+    html.Div(
+        [
+            dmc.TreeSelect(id='tree-select', data=data, label='Favorite item'),
+            html.Div(id='selected-value'),
+        ]
+    )
 )
 
 
@@ -114,8 +122,9 @@ The dropdown uses `ScrollArea.Autosize` by default. Set `maxDropdownHeight` or
 underlying Combobox and Popover, including `withinPortal`, `position`, `middlewares`,
 `width`, `offset`, `transitionProps`, padding, and shadow.
 
-`dropdownOpened` controls and reports whether the dropdown is open. `onDropdownOpen`
-and `onDropdownClose` can also be used in callbacks.
+`dropdownOpened` controls and reports whether the dropdown is open. Use it as a Dash
+callback input to observe opening and closing; React event handlers such as
+`onDropdownOpen` and `onDropdownClose` are not exposed as DMC callback props.
 
 ## Input options
 
