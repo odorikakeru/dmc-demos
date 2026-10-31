@@ -7,6 +7,10 @@ a fork of Dash Mantine Components.
 Examples here may also be used to demonstrate and reproduce bugs or other problems
 encountered while developing that project.
 
+## Component documentation
+
+- [TreeSelect](docs/tree-select.md)
+
 ## Set up
 
 Create and activate a virtual environment, then install the development requirements.
