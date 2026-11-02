@@ -44,17 +44,32 @@ Run the test suite with:
 pytest
 ```
 
-## Run the TreeSelect documentation
+## Run the demos
 
-Install the requirements above, then start the local Dash server:
+Install the requirements above, then start any demo with the local Dash server and open
+[http://localhost:8050](http://localhost:8050):
 
 ```bash
-python app.py
+python tree_select_demo.py
+python data_list_demo.py
+python floating_window_demo.py
 ```
 
-Open [http://localhost:8050](http://localhost:8050) to view the TreeSelect guide. The
-component currently lives on the `feat/tree-select-v3` branch of the DMC fork, which is
-the branch installed by `requirements.txt`.
+`DataList` and `FloatingWindow` live on the `dev` branch of the DMC fork. For an editable
+checkout in `../dash-mantine-components`, run `npm run build` there after switching
+branches so the generated Python components and JavaScript bundle match the branch.
+[`demo_page.py`](demo_page.py) provides the layout shared by the `DataList` and
+`FloatingWindow` demos.
+
+Floating windows are created only when their example is opened. The app supplies
+`validation_layout` with all dynamic windows and corner buttons so Dash can validate
+their callback IDs without rendering them on initial load. Its callbacks are registered
+on the demo app rather than globally.
+
+## Run the TreeSelect documentation
+
+The TreeSelect component currently lives on the `feat/tree-select-v3` branch of the DMC
+fork, which is the branch installed by `requirements.txt`.
 
 The page uses real DMC components inside `MantineProvider`. Each section includes a
 live example and expandable source generated from the example function. Examples
@@ -64,7 +79,7 @@ standard input props. JSON readouts show the values reported to Dash callbacks.
 
 Custom node, pill, filter, and overflow functions live in
 [`assets/tree-select.js`](assets/tree-select.js). Shared data and callbacks are in
-[`app.py`](app.py). The feature-branch package must include the generated Python
+[`tree_select_demo.py`](tree_select_demo.py). The feature-branch package must include the generated Python
 components and compiled JavaScript bundle.
 
 The app explicitly selects React 19.2.4, bundled with Dash 4.5, as required by DMC 3.
@@ -72,6 +87,6 @@ Regression tests cover layout serialization, unique IDs and data values, callbac
 requests, local assets, and the React version.
 
 For an editable DMC checkout, Mypy may not resolve the editable import hook. Set
-`MYPYPATH` to the DMC source root and use `mypy --follow-imports=silent app.py` to
+`MYPYPATH` to the DMC source root and use `mypy --follow-imports=silent tree_select_demo.py` to
 check the app against the generated component types without reporting errors in
 the generated dependency itself.

@@ -5,7 +5,7 @@ selection, multiple selection, and checkbox selection with parent-child cascadin
 See the [Mantine TreeSelect documentation](https://mantine.dev/core/tree-select/) for
 the underlying component.
 
-Run `python app.py` to explore the interactive documentation at
+Run `python tree_select_demo.py` to explore the interactive documentation at
 [localhost:8050](http://localhost:8050). Each example has expandable source and the
 selection examples show their actual Dash callback values. Custom JavaScript
 functions are included in [`assets/tree-select.js`](../assets/tree-select.js).

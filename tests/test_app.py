@@ -4,7 +4,7 @@ import json
 
 import pytest
 
-from app import (
+from tree_select_demo import (
     BRANCHES,
     DATA,
     SECTIONS,
